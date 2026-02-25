@@ -61,7 +61,7 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
     </style>
-<link rel="stylesheet" href="dark-theme.css" />
+    <link rel="stylesheet" href="dark-theme.css" />
 </head>
 
 <body class="flex flex-col relative">
@@ -95,34 +95,36 @@
                         <i class="fas fa-globe"></i>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-heading font-bold text-gray-800">Web Tradicional</h2>
-                        <p class="text-sm text-gray-500">Fluxo Clássico (MPA)</p>
+                        <h2 class="text-2xl font-heading font-bold text-gray-800">Web Arcaica</h2>
+                        <p class="text-sm text-gray-500">Páginas inteiras a cada ação (MPA)</p>
                     </div>
                 </div>
                 <div class="flex-1 space-y-6 relative z-10">
                     <div class="bg-gray-50 p-4 rounded-lg border border-gray-100">
-                        <p class="font-mono text-sm text-gray-700 mb-2 font-bold">Fluxo:</p>
+                        <p class="font-mono text-sm text-gray-700 mb-2 font-bold">O que acontece:</p>
                         <div class="flex items-center gap-2 text-sm text-gray-600">
-                            <span>Submit</span>
+                            <span>Usuário clica</span>
                             <i class="fas fa-arrow-right text-xs"></i>
-                            <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded">Reload Total</span>
+                            <span class="bg-red-100 text-red-700 px-2 py-0.5 rounded">Página recarrega inteira</span>
                             <i class="fas fa-arrow-right text-xs"></i>
-                            <span>Renderiza</span>
+                            <span>Volta do zero</span>
                         </div>
                     </div>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-exclamation-circle mt-1 text-orange-500"></i>
-                            <p class="text-gray-700">Erros de validação aparecem "depois", quebrando o fluxo do usuário.
-                            </p>
+                            <p class="text-gray-700">Erros de validação só aparecem <strong>após o reload</strong>,
+                                frustrando quem preenche o formulário.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fas fa-eye-slash mt-1 text-gray-400"></i>
-                            <p class="text-gray-700">Perda de contexto visual e scroll ("tela branca").</p>
+                            <p class="text-gray-700">O usuário perde o scroll e o contexto visual.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fas fa-thumbs-down mt-1 text-red-500"></i>
-                            <p class="text-gray-700 font-medium">UX percebida como lenta e travada.</p>
+                            <p class="text-gray-700 font-medium">Resultado: experiência visual sem sensação de
+                                continuidade, mesmo com
+                                conexão boa.</p>
                         </li>
                     </ul>
                 </div>
@@ -138,36 +140,36 @@
                         <i class="fas fa-code-branch"></i>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-heading font-bold text-gray-800">Tentativa SPA/Ajax</h2>
-                        <p class="text-sm text-gray-500">Modernização Manual</p>
+                        <h2 class="text-2xl font-heading font-bold text-gray-800">Modernização: SPA / Ajax</h2>
+                        <p class="text-sm text-gray-500">Resolvendo o problema no lado do cliente</p>
                     </div>
                 </div>
                 <div class="flex-1 space-y-6 relative z-10">
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                        <p class="font-mono text-sm text-htmx mb-2 font-bold">Fluxo:</p>
+                        <p class="font-mono text-sm text-htmx mb-2 font-bold">O que acontece:</p>
                         <div class="flex items-center gap-2 text-sm text-gray-600 flex-wrap">
-                            <span>Event</span>
+                            <span>Usuário clica</span>
                             <i class="fas fa-arrow-right text-xs"></i>
-                            <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">Fetch JSON</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">Busca JSON via Fetch</span>
                             <i class="fas fa-arrow-right text-xs"></i>
-                            <span>JS Render</span>
+                            <span>JS remonta o HTML</span>
                         </div>
                     </div>
                     <ul class="space-y-4">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-layer-group mt-1 text-indigo-500"></i>
-                            <p class="text-gray-700"><strong>Mais camadas:</strong> API JSON separada + Lógica de
-                                Frontend.</p>
+                            <p class="text-gray-700">Você precisa de uma API separada
+                                e de lógica no frontend para implementar reatividade.
+                            </p>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fas fa-copy mt-1 text-orange-500"></i>
-                            <p class="text-gray-700"><strong>Duplicação:</strong> Regras de negócio e validação
-                                repetidas no JS.</p>
+                            <p class="text-gray-700">Validações e regras de
+                                negócio escritas duas vezes: no backend e no frontend.</p>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fas fa-bug mt-1 text-red-500"></i>
-                            <p class="text-gray-700"><strong>Código "Cola":</strong> Manutenção difícil, muitos pontos
-                                de falha.</p>
+                            <p class="text-gray-700">Aumento de código compromete a produtividade.</p>
                         </li>
                     </ul>
                 </div>
@@ -175,8 +177,6 @@
         </div>
         <!-- Footer -->
         <div class="mt-8 flex justify-between items-end text-gray-400 text-sm">
-            <p>Django + HTMX Series</p>
-            <p class="font-mono">02 / 10</p>
         </div>
     </div>
 </body>
