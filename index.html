@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slide Player</title>
+  <link rel="stylesheet" href="player.css" />
+</head>
+<body>
+
+  <!-- Slide Viewport -->
+  <div id="slide-viewport">
+    <div id="slides-wrapper"></div>
+  </div>
+
+  <!-- Player Controls (auto-hide) -->
+  <div id="player-controls">
+    <div id="controls-inner">
+
+      <!-- Left: slide counter -->
+      <div class="ctrl-section ctrl-left">
+        <span id="slide-counter">1 / 1</span>
+      </div>
+
+      <!-- Center: progress dots + prev/next -->
+      <div class="ctrl-section ctrl-center">
+        <button id="btn-prev" class="ctrl-btn" title="Slide anterior (←)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div id="progress-dots"></div>
+        <button id="btn-next" class="ctrl-btn" title="Próximo slide (→)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Right: fullscreen -->
+      <div class="ctrl-section ctrl-right">
+        <button id="btn-fullscreen" class="ctrl-btn" title="Tela cheia (F)">
+          <svg id="icon-enter-fs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="8 3 3 3 3 8"></polyline>
+            <polyline points="21 8 21 3 16 3"></polyline>
+            <polyline points="3 16 3 21 8 21"></polyline>
+            <polyline points="16 21 21 21 21 16"></polyline>
+          </svg>
+          <svg id="icon-exit-fs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+            <polyline points="4 14 10 14 10 20"></polyline>
+            <polyline points="20 10 14 10 14 4"></polyline>
+            <polyline points="10 14 3 21"></polyline>
+            <polyline points="21 3 14 10"></polyline>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="player.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Padrão 3: Submit Parcial</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Montserrat:wght@400;600;700;800&amp;family=Fira+Code:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Brand Colors */
+        .text-django {
+            color: #092e20;
+        }
+
+        .bg-django {
+            background-color: #092e20;
+        }
+
+        .border-django {
+            border-color: #092e20;
+        }
+
+        .text-htmx {
+            color: #336791;
+        }
+
+        .bg-htmx {
+            background-color: #336791;
+        }
+
+        /* Step Cards */
+        .step-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Connector Arrows */
+        .connector-arrow {
+            color: #cbd5e1;
+            font-size: 2rem;
+            margin-top: 4rem;
+            /* Align with icon area */
+        }
+
+        /* Code styling */
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-radius: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .code-line {
+            display: block;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .code-keyword {
+            color: #f472b6;
+        }
+
+        /* pink */
+        .code-attr {
+            color: #93c5fd;
+        }
+
+        /* blue */
+        .code-string {
+            color: #a3e635;
+        }
+
+        /* green */
+        .code-tag {
+            color: #60a5fa;
+        }
+
+        /* blue-400 */
+        .code-comment {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* gray */
+
+        /* Custom Shadows */
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Status Badges */
+        .badge-problem {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .badge-solution {
+            background-color: #e0f2fe;
+            color: #075985;
+        }
+
+        .badge-result {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col relative">
+    <!-- Header Strip -->
+    <div class="absolute top-0 left-0 w-full h-2 bg-django z-20"></div>
+    <!-- Main Content Container -->
+    <div class="flex-1 flex flex-col p-10 pt-14 relative z-10 h-full">
+        <!-- Header -->
+        <header class="mb-8 border-b border-gray-200 pb-4">
+            <div class="flex items-center gap-3 mb-1">
+                <span
+                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Padrão
+                    #3</span>
+            </div>
+            <div class="flex justify-between items-end">
+                <div>
+                    <h1 class="text-4xl font-heading font-extrabold text-gray-800 leading-tight">
+                        Submit Parcial <span class="font-light text-gray-400">|</span> <span
+                            class="text-htmx text-3xl">Partial Submit</span>
+                    </h1>
+                    <p class="text-gray-500 mt-2 text-lg">Atualizações sem recarregar a página para CRUDs ricos e
+                        dinâmicos</p>
+                </div>
+                <!-- Legend/Key for the pattern -->
+                <div class="flex gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-400"></div>Fluxo Padrão
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-htmx"></div>Estratégia
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>Resultado
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Flow Area (3 Columns) -->
+        <div class="flex-1 grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch pb-6">
+            <!-- STEP 1: PROBLEM -->
+            <div class="step-card bg-white rounded-xl border-t-4 border-red-400 card-shadow p-6 group">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-12 h-12 rounded-full badge-problem flex items-center justify-center text-xl">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Reload Total</span>
+                </div>
+                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Interrupção de Fluxo</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                    Em formulários complexos (ex: modais, dashboards), o submit tradicional recarrega tudo, perdendo
+                    scroll e estado da UI.
+                </p>
+                <!-- Visual Representation -->
+                <div
+                    class="mt-auto bg-gray-50 rounded-lg p-4 border border-gray-200 relative overflow-hidden flex flex-col items-center justify-center h-32">
+                    <div class="w-full h-full flex flex-col gap-2 opacity-50 blur-[1px]">
+                        <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                        <div class="h-20 bg-white border border-gray-300 rounded w-full"></div>
+                        <div class="h-2 bg-gray-300 rounded w-1/2"></div>
+                    </div>
+                    <!-- Loading Spinner Overlay -->
+                    <div class="absolute inset-0 flex items-center justify-center bg-white/60">
+                        <i class="fas fa-circle-notch fa-spin text-3xl text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ARROW 1 -->
+            <div class="flex items-center justify-center">
+                <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+            <!-- STEP 2: SOLUTION (Focus) -->
+            <div
+                class="step-card bg-white rounded-xl border-t-4 border-htmx card-shadow p-6 relative transform scale-105 z-10">
+                <div
+                    class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                    Lógica Bifurcada
+                </div>
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-12 h-12 rounded-full badge-solution flex items-center justify-center text-xl">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <span class="text-xs font-bold text-htmx uppercase tracking-wider">View Django</span>
+                </div>
+                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Erro vs Sucesso</h3>
+                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                    O servidor decide o que atualizar baseando-se na validade do form.
+                </p>
+                <!-- Code Snippet -->
+                <div class="mt-auto code-block p-4 shadow-inner border border-gray-700">
+                    <div class="flex items-center justify-between mb-2 border-b border-gray-700 pb-2">
+                        <span class="text-xs text-gray-400 font-mono">views.py</span>
+                        <i class="fab fa-python text-yellow-500"></i>
+                    </div>
+                    <code class="code-line">
+<span class="code-keyword">if</span> form.is_valid():
+                    </code>
+                    <code class="code-line pl-4">
+                        item = form.save()
+                    </code>
+                    <code class="code-line pl-4">
+<span class="code-keyword">return</span> render(request, <span class="code-string">"row.html"</span>, {<span class="code-string">"item"</span>: item})
+                    </code>
+                    <code class="code-line">
+<span class="code-keyword">else</span>:
+                    </code>
+                    <code class="code-line pl-4">
+<span class="code-comment"># Retorna form com erros</span>
+</code>
+                    <code class="code-line pl-4">
+<span class="code-keyword">return</span> render(request, <span class="code-string">"form.html"</span>, {<span class="code-string">"form"</span>: form})
+                    </code>
+                </div>
+            </div>
+            <!-- ARROW 2 -->
+            <div class="flex items-center justify-center">
+                <i class="fas fa-chevron-right connector-arrow"></i>
+            </div>
+            <!-- STEP 3: RESULT -->
+            <div class="step-card bg-white rounded-xl border-t-4 border-green-500 card-shadow p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div class="w-12 h-12 rounded-full badge-result flex items-center justify-center text-xl">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Experiência</span>
+                </div>
+                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Atualização Cirúrgica</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                    Se der erro, o form "pisca" com as mensagens. Se der certo, a nova linha aparece na tabela ou um
+                    card surge.
+                </p>
+                <!-- Visual Representation -->
+                <div
+                    class="mt-auto bg-green-50 rounded-lg p-4 border border-green-200 flex flex-col justify-center h-32 relative">
+                    <!-- Table representation -->
+                    <div class="space-y-2">
+                        <div class="flex gap-2">
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                        </div>
+                        <div class="flex gap-2">
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+                        </div>
+                        <!-- New Row Animation -->
+                        <div class="flex gap-2 p-1 bg-green-200 rounded border border-green-300 animate-pulse">
+                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
+                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
+                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute bottom-1 right-1 text-[10px] text-green-700 font-bold bg-white px-1 rounded shadow">
+                        + Nova Linha Inserida
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="mt-2 flex justify-between items-end text-gray-400 text-sm">
+            <div class="flex gap-4">
+                <p><i class="fas fa-lightbulb mr-1 text-yellow-500"></i> Dica: Use <code>hx-swap="outerHTML"</code> para
+                    substituir a linha inteira ou o form.</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <p>Django + HTMX Series</p>
+                <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-gray-600 font-bold">09 / 10</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

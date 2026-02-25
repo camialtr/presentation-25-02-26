@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Formulários Modernos com Django + HTMX</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;family=Montserrat:wght@400;600;800&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .slide-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* Decorative Background Elements */
+        .bg-accent-top {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 200px;
+            background-color: #092e20;
+            /* Django Green Dark */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 0);
+            z-index: 0;
+        }
+
+        .bg-accent-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background-color: #336791;
+            /* HTMX/Python Blue */
+            z-index: 0;
+        }
+
+        /* Header / Title Section */
+        .header-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 80px 20px 80px;
+            z-index: 1;
+        }
+
+        .main-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #092e20;
+            /* Django Green */
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .main-title .highlight {
+            color: #336791;
+            /* HTMX Blue */
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: #555;
+            font-weight: 300;
+            max-width: 800px;
+            margin-bottom: 40px;
+            border-left: 5px solid #092e20;
+            padding-left: 20px;
+        }
+
+        /* Cards Section */
+        .cards-wrapper {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 0 80px 80px 80px;
+            z-index: 1;
+        }
+
+        .card {
+            flex: 1;
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-top: 6px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .card-green {
+            border-top-color: #092e20;
+            /* Django */
+        }
+
+        .card-blue {
+            border-top-color: #336791;
+            /* HTMX */
+        }
+
+        .card-dark {
+            border-top-color: #2c3e50;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-bg-green {
+            background-color: rgba(9, 46, 32, 0.1);
+            color: #092e20;
+        }
+
+        .icon-bg-blue {
+            background-color: rgba(51, 103, 145, 0.1);
+            color: #336791;
+        }
+
+        .icon-bg-dark {
+            background-color: rgba(44, 62, 80, 0.1);
+            color: #2c3e50;
+        }
+
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .card-text {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+        }
+
+        /* Footer logos or info */
+        .footer-info {
+            position: absolute;
+            bottom: 30px;
+            right: 80px;
+            font-size: 14px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tech-badge {
+            background: #eee;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 12px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Logos placeholder area */
+        .logo-area {
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 24px;
+            color: #092e20;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slide-container">
+        <!-- Background Elements -->
+        <div class="bg-accent-top"></div>
+        <div class="bg-accent-bottom"></div>
+        <!-- Logo / Brand -->
+        <div class="logo-area">
+            <div class="logo-text">django <span style="color: #333; font-weight:300;">+</span> <span
+                    style="color:#336791;">htmx</span></div>
+        </div>
+        <!-- Main Header -->
+        <div class="header-content">
+            <h1 class="main-title">
+                Formulários Modernos<br />
+                com <span class="highlight">Django + HTMX</span>
+            </h1>
+            <div class="subtitle">
+                <p>Construindo interfaces interativas e responsivas mantendo a simplicidade do desenvolvimento
+                    server-side.</p>
+            </div>
+        </div>
+        <!-- Cards Content -->
+        <div class="cards-wrapper">
+            <!-- Card 1 -->
+            <div class="card card-green">
+                <div class="card-icon icon-bg-green">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3 class="card-title">Objetivo</h3>
+                <div class="card-text">
+                    <p>Melhorar a experiência de usuário (UX) em formulários sem a necessidade de transformar o projeto
+                        inteiro em uma Single Page Application (SPA) complexa.</p>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="card card-blue">
+                <div class="card-icon icon-bg-blue">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h3 class="card-title">Combinação</h3>
+                <div class="card-text">
+                    <p>União da robustez do <strong>Django Forms</strong> (validação, cleaning e segurança) com a
+                        agilidade do <strong>HTMX</strong> para atualizações parciais do HTML.</p>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="card card-dark">
+                <div class="card-icon icon-bg-dark">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 class="card-title">Resultado</h3>
+                <div class="card-text">
+                    <p>Interatividade fluida "SPA-like" com a simplicidade e a produtividade da renderização no servidor
+                        (SSR), reduzindo drasticamente o JavaScript.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="footer-info">
+            <span class="tech-badge"><i class="fab fa-python"></i> Python</span>
+            <span class="tech-badge"><i class="fas fa-code"></i> HTML5</span>
+            <span>2026 Presentation</span>
+        </div>
+    </div>
+</body>
+
+</html>

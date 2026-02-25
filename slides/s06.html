@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Por que Django + HTMX encaixam</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Montserrat:wght@400;600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Custom Django Colors */
+        .text-django {
+            color: #092e20;
+        }
+
+        .bg-django {
+            background-color: #092e20;
+        }
+
+        .border-django {
+            border-color: #092e20;
+        }
+
+        .text-htmx {
+            color: #336791;
+        }
+
+        .bg-htmx {
+            background-color: #336791;
+        }
+
+        /* Slide Specific Styles */
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .arrow-down {
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #cbd5e1;
+        }
+    </style>
+</head>
+
+<body class="flex flex-col relative">
+    <!-- Header Strip -->
+    <div class="absolute top-0 left-0 w-full h-2 bg-django z-20"></div>
+    <!-- Main Content Container -->
+    <div class="flex-1 flex flex-col p-12 pt-16 relative z-10">
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex items-center gap-3 mb-2">
+                <span
+                    class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Arquitetura</span>
+                <span class="h-px flex-1 bg-gray-300"></span>
+            </div>
+            <h1 class="text-5xl font-heading font-extrabold text-django leading-tight">
+                Por que <span class="text-django">Django</span> + <span class="text-htmx">HTMX</span><br />
+                encaixam tão bem?
+            </h1>
+        </header>
+        <!-- Content Layout: 2 Columns -->
+        <div class="flex-1 grid grid-cols-12 gap-10 h-full">
+            <!-- Left Column: Benefits (Visual Cards) -->
+            <div class="col-span-7 flex flex-col gap-6 justify-center">
+                <!-- Benefit 1 -->
+                <div class="bg-white p-6 rounded-lg border-l-8 border-django card-shadow flex items-start gap-5">
+                    <div
+                        class="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center text-django text-2xl flex-shrink-0 mt-1">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-xl text-gray-800 mb-2">SSR e URLs "de Verdade"</h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            O servidor continua sendo o dono do estado da aplicação. As URLs representam recursos reais,
+                            garantindo que o histórico do navegador e o SEO funcionem nativamente.
+                        </p>
+                    </div>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="bg-white p-6 rounded-lg border-l-8 border-htmx card-shadow flex items-start gap-5">
+                    <div
+                        class="w-14 h-14 bg-blue-50 rounded-full flex items-center justify-center text-htmx text-2xl flex-shrink-0 mt-1">
+                        <i class="fas fa-check-double"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-xl text-gray-800 mb-2">Validação Única (Server-Side)</h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            Não há necessidade de duplicar a lógica de validação no JavaScript. O
+                            <code>Django Form</code> é a única fonte da verdade para regras de negócio e integridade de
+                            dados.
+                        </p>
+                    </div>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="bg-white p-6 rounded-lg border-l-8 border-gray-600 card-shadow flex items-start gap-5">
+                    <div
+                        class="w-14 h-14 bg-gray-100 rounded-full flex items-center justify-center text-gray-600 text-2xl flex-shrink-0 mt-1">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-xl text-gray-800 mb-2">Menos Tooling e JavaScript</h3>
+                        <p class="text-gray-600 text-base leading-relaxed">
+                            Reduz drasticamente a complexidade acidental: sem pipelines de build complexos
+                            (Webpack/Vite), sem gerenciamento de estado no cliente (Redux/Vuex) e menos "código cola".
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Column: Visual Diagram of Server-Driven UI -->
+            <div
+                class="col-span-5 bg-gray-50 rounded-xl p-8 border border-gray-200 flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-gray-200 text-gray-600 text-xs px-3 py-1 rounded-bl-lg font-bold">
+                    Server-Driven UI</div>
+                <!-- Diagram Container -->
+                <div class="w-full max-w-sm flex flex-col items-center gap-4 relative z-10">
+                    <!-- Browser Layer -->
+                    <div class="w-full bg-white p-4 rounded-lg border-2 border-htmx shadow-sm text-center relative">
+                        <div
+                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white text-xs px-2 py-0.5 rounded font-bold">
+                            FRONTEND (HTMX)</div>
+                        <p class="text-gray-700 font-bold mb-1"><i
+                                class="fas fa-desktop mr-2 text-gray-400"></i>Navegador</p>
+                        <p class="text-xs text-gray-500">Eventos de usuário, troca de HTML no DOM</p>
+                    </div>
+                    <!-- Arrows -->
+                    <div class="flex justify-between w-3/4 text-gray-400 text-xs font-mono">
+                        <div class="flex flex-col items-center">
+                            <i class="fas fa-arrow-down mb-1"></i>
+                            <span>Request (GET/POST)</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <span>HTML (Fragmento)</span>
+                            <i class="fas fa-arrow-up mt-1"></i>
+                        </div>
+                    </div>
+                    <!-- Server Layer -->
+                    <div
+                        class="w-full bg-white p-4 rounded-lg border-2 border-django shadow-sm text-center relative mt-2">
+                        <div
+                            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-django text-white text-xs px-2 py-0.5 rounded font-bold">
+                            BACKEND (DJANGO)</div>
+                        <p class="text-gray-700 font-bold mb-3"><i class="fas fa-server mr-2 text-gray-400"></i>Servidor
+                        </p>
+                        <!-- Internal Components -->
+                        <div class="grid grid-cols-2 gap-2 text-xs">
+                            <div class="bg-green-50 p-2 rounded border border-green-100 text-django font-semibold">
+                                <i class="fas fa-code mr-1"></i> Views
+                            </div>
+                            <div class="bg-green-50 p-2 rounded border border-green-100 text-django font-semibold">
+                                <i class="fab fa-wpforms mr-1"></i> Forms
+                            </div>
+                            <div
+                                class="col-span-2 bg-yellow-50 p-2 rounded border border-yellow-100 text-yellow-800 font-semibold">
+                                <i class="fas fa-file-code mr-1"></i> Templates (HTML)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Caption -->
+                <div class="mt-8 bg-blue-50 p-4 rounded-lg border border-blue-100 w-full">
+                    <p class="text-center text-sm text-blue-800">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        <strong>Conceito Chave:</strong> O servidor decide <em>o que</em> mostrar, enviando HTML pronto.
+                        O cliente apenas decide <em>onde</em> mostrar.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="mt-8 flex justify-between items-end text-gray-400 text-sm">
+            <p>Formulários Modernos com Django + HTMX</p>
+            <p class="font-mono">06 / 10</p>
+        </div>
+    </div>
+</body>
+
+</html>

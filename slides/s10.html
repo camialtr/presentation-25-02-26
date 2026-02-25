@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Trade-offs e Conclusão</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Montserrat:wght@400;600;700;800&amp;family=Fira+Code:wght@400;500&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            width: 1280px;
+            height: 720px;
+            overflow: hidden;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Brand Colors */
+        .text-django {
+            color: #092e20;
+        }
+
+        .bg-django {
+            background-color: #092e20;
+        }
+
+        .border-django {
+            border-color: #092e20;
+        }
+
+        .text-htmx {
+            color: #336791;
+        }
+
+        .bg-htmx {
+            background-color: #336791;
+        }
+
+        .border-htmx {
+            border-color: #336791;
+        }
+
+        /* Custom Colors for this slide */
+        .bg-success-light {
+            background-color: #ecfdf5;
+        }
+
+        .border-success {
+            border-color: #059669;
+        }
+
+        .text-success {
+            color: #059669;
+        }
+
+        .icon-success {
+            color: #10b981;
+        }
+
+        .bg-warning-light {
+            background-color: #fff7ed;
+        }
+
+        .border-warning {
+            border-color: #ea580c;
+        }
+
+        .text-warning {
+            color: #ea580c;
+        }
+
+        .icon-warning {
+            color: #f97316;
+        }
+
+        .bg-info-dark {
+            background-color: #1e293b;
+        }
+
+        .text-info-light {
+            color: #bae6fd;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col relative">
+    <!-- Header Strip -->
+    <div class="absolute top-0 left-0 w-full h-2 bg-django z-20"></div>
+    <!-- Main Content Container -->
+    <div class="flex-1 flex flex-col p-10 pt-14 relative z-10 h-full">
+        <!-- Header -->
+        <header class="mb-8 border-b border-gray-200 pb-4">
+            <div class="flex items-center gap-3 mb-1">
+                <span
+                    class="bg-gray-800 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Resumo</span>
+            </div>
+            <h1 class="text-4xl font-heading font-extrabold text-django leading-tight">
+                Trade-offs &amp; Conclusão
+            </h1>
+            <p class="text-gray-500 mt-2 text-lg">Quando usar, cuidados necessários e o veredito final</p>
+        </header>
+        <!-- Content Grid -->
+        <div class="flex-1 grid grid-cols-2 gap-8 h-full">
+            <!-- LEFT COLUMN: Pros & Cons -->
+            <div class="flex flex-col gap-6">
+                <!-- Benefícios (Green) -->
+                <div
+                    class="flex-1 bg-white rounded-xl border-l-8 border-success card-shadow p-6 flex flex-col justify-start">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center icon-success text-xl">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <h2 class="font-heading font-bold text-xl text-gray-800">Benefícios</h2>
+                    </div>
+                    <div class="space-y-3 pl-2">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-success text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Menos código "Cola":</strong> Redução drástica de JavaScript manual e endpoints
+                                JSON específicos.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-success text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Reaproveitamento Total:</strong> Usa templates, Forms, validação e permissões do
+                                Django sem duplicar lógica.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-check mt-1 text-success text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Produtividade:</strong> Ciclo de desenvolvimento mais rápido e manutenção
+                                simplificada (Locality of Behavior).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Custos/Cuidados (Orange) -->
+                <div
+                    class="flex-1 bg-white rounded-xl border-l-8 border-warning card-shadow p-6 flex flex-col justify-start">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center icon-warning text-xl">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h2 class="font-heading font-bold text-xl text-gray-800">Custos &amp; Cuidados</h2>
+                    </div>
+                    <div class="space-y-3 pl-2">
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-server mt-1 text-warning text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Volume de Requests:</strong> Muitos requests pequenos podem impactar o servidor;
+                                use cache e otimize queries.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-folder-open mt-1 text-warning text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Organização de Templates:</strong> Fragmentar HTML em parciais exige disciplina
+                                do time para não virar bagunça.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i class="fas fa-gamepad mt-1 text-warning text-sm"></i>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                <strong>Limitações de Estado:</strong> Apps offline-first ou com estado de cliente muito
+                                complexo (ex: editores ricos) pedem SPA.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- RIGHT COLUMN: Conclusion & Checklist -->
+            <div
+                class="bg-info-dark rounded-xl shadow-xl p-8 flex flex-col relative overflow-hidden text-white border-t-8 border-htmx">
+                <!-- Background Decoration -->
+                <div class="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+                    <i class="fas fa-quote-right text-9xl text-white"></i>
+                </div>
+                <div class="relative z-10 flex-1 flex flex-col">
+                    <h2 class="font-heading font-bold text-2xl text-white mb-2">
+                        <i class="fas fa-flag-checkered mr-2 text-htmx"></i> Veredito Final
+                    </h2>
+                    <div class="w-16 h-1 bg-htmx mb-6"></div>
+                    <div class="mb-8">
+                        <p class="text-lg font-light leading-relaxed text-gray-200 italic">
+                            "HTMX é a ferramenta ideal para adicionar <strong>interatividade moderada</strong> mantendo
+                            o HTML como cidadão de primeira classe. O Django continua sendo o cérebro, definindo as
+                            regras e a verdade dos dados."
+                        </p>
+                    </div>
+                    <div class="bg-gray-800 rounded-lg p-6 border border-gray-700 mt-auto">
+                        <h3 class="font-bold text-htmx mb-4 uppercase text-xs tracking-widest">Checklist de Decisão</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-300">O servidor já sabe renderizar?</p>
+                                <span
+                                    class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs font-bold border border-green-700">USE
+                                    HTMX</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-300">Precisa de validação rápida?</p>
+                                <span
+                                    class="bg-green-900 text-green-300 px-2 py-1 rounded text-xs font-bold border border-green-700">USE
+                                    HTMX</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <p class="text-sm text-gray-300">Precisa funcionar offline?</p>
+                                <span
+                                    class="bg-red-900 text-red-300 px-2 py-1 rounded text-xs font-bold border border-red-700">USE
+                                    SPA/PWA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer Logo Area -->
+                <div class="mt-8 pt-6 border-t border-gray-700 flex justify-between items-center text-gray-400 text-sm">
+                    <p>Modernização sem reescrita</p>
+                    <div class="flex items-center gap-2 font-heading font-bold">
+                        <span class="text-django">django</span>
+                        <span>+</span>
+                        <span class="text-htmx">htmx</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slide Number -->
+        <div class="absolute bottom-6 right-10 text-gray-400 text-sm font-mono font-bold">
+            10 / 10
+        </div>
+    </div>
+</body>
+
+</html>
