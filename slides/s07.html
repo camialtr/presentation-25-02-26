@@ -137,17 +137,14 @@
         <header class="mb-8 border-b border-gray-200 pb-4">
             <div class="flex items-center gap-3 mb-1">
                 <span
-                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Padrão
-                    #1</span>
+                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Casos de Uso</span>
             </div>
             <div class="flex justify-between items-end">
                 <div>
                     <h1 class="text-4xl font-heading font-extrabold text-gray-800 leading-tight">
-                        Validação ao Vivo <span class="font-light text-gray-400">|</span> <span
-                            class="text-htmx text-3xl">Live Validation</span>
+                        Validação ao Vivo
                     </h1>
-                    <p class="text-gray-500 mt-2 text-lg">Feedback instantâneo sem duplicar regras de negócio no
-                        frontend</p>
+                    <p class="text-gray-500 mt-2 text-lg">Feedback instantâneo sem duplicar regras de negócio.</p>
                 </div>
                 <!-- Legend/Key for the pattern -->
                 <div class="flex gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
@@ -204,7 +201,7 @@
                 class="step-card bg-white rounded-xl border-t-4 border-htmx card-shadow p-6 relative transform scale-105 z-10">
                 <div
                     class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                    HTMX Magic
+                    HTMX
                 </div>
                 <div class="flex justify-between items-start mb-6">
                     <div class="w-12 h-12 rounded-full badge-solution flex items-center justify-center text-xl">
@@ -212,9 +209,9 @@
                     </div>
                     <span class="text-xs font-bold text-htmx uppercase tracking-wider">Implementação</span>
                 </div>
-                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Request "Inline"</h3>
+                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Request Inline</h3>
                 <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    Dispara validação ao sair do campo (blur) ou ao digitar (keyup).
+                    Dispara validação ao sair do campo.
                 </p>
                 <!-- Code Snippet -->
                 <div class="mt-auto code-block p-4 shadow-inner border border-gray-700">
@@ -238,7 +235,7 @@
 <span class="code-tag">/&gt;</span>
 </code>
                     <code class="code-line mt-2 text-gray-500 text-xs">
-                        &lt;!-- O servidor retorna apenas o HTML do erro --&gt;
+                        O servidor retorna apenas o HTML adequado, e aplica no elemento alvo.
                     </code>
                 </div>
             </div>
@@ -254,9 +251,9 @@
                     </div>
                     <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Benefício</span>
                 </div>
-                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">UX Fluida + DRY</h3>
+                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">UX Fluida e dinâmica</h3>
                 <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    O usuário vê o erro na hora. O dev mantém a validação num único lugar: <code
+                    O usuário vê o erro na hora e a validação fica num único lugar: <code
                         class="bg-gray-100 px-1 rounded text-django font-bold">forms.py</code>.
                 </p>
                 <!-- Visual Representation -->
@@ -267,21 +264,9 @@
                         <i class="fas fa-arrows-alt-h text-gray-400"></i>
                         <i class="fas fa-smile text-green-500 text-2xl"></i>
                     </div>
-                    <p class="text-xs text-center text-green-800 font-bold">Single Source of Truth</p>
+                    <p class="text-xs text-center text-green-800 font-bold">Fonte única de verdade</p>
                     <p class="text-[10px] text-center text-green-700">Validação Backend = Validação Frontend</p>
                 </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <div class="mt-2 flex justify-between items-end text-gray-400 text-sm">
-            <div class="flex gap-4">
-                <p><i class="fas fa-lightbulb mr-1 text-yellow-500"></i> Dica: Use
-                    <code>hx-trigger="keyup delay:500ms"</code> para search inputs.
-                </p>
-            </div>
-            <div class="flex items-center gap-2">
-                <p>Django + HTMX Series</p>
-                <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-gray-600 font-bold">07 / 10</span>
             </div>
         </div>
     </div>

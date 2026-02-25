@@ -136,17 +136,14 @@
         <header class="mb-8 border-b border-gray-200 pb-4">
             <div class="flex items-center gap-3 mb-1">
                 <span
-                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Padrão
-                    #2</span>
+                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Casos de Uso</span>
             </div>
             <div class="flex justify-between items-end">
                 <div>
                     <h1 class="text-4xl font-heading font-extrabold text-gray-800 leading-tight">
-                        Campos Dependentes <span class="font-light text-gray-400">|</span> <span
-                            class="text-htmx text-3xl">Chained Selects</span>
+                        Campos Dependentes
                     </h1>
-                    <p class="text-gray-500 mt-2 text-lg">Carregamento dinâmico de opções (ex: Estado → Cidades) sem
-                        JavaScript complexo</p>
+                    <p class="text-gray-500 mt-2 text-lg">Carregamento dinâmico de opções sem JavaScript complexo.</p>
                 </div>
                 <!-- Legend/Key for the pattern -->
                 <div class="flex gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
@@ -174,8 +171,7 @@
                 </div>
                 <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Lógica Duplicada</h3>
                 <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Sem HTMX, você cria um endpoint JSON, faz fetch no JS, limpa o select de Cidades e itera criando
-                    options. Muito "código cola".
+                    Sem HTMX, você cria um endpoint JSON, faz fetch no JS, limpa o select de Cidades e itera criando novas opções.
                 </p>
                 <!-- Visual Representation -->
                 <div
@@ -212,7 +208,7 @@
                 class="step-card bg-white rounded-xl border-t-4 border-htmx card-shadow p-6 relative transform scale-105 z-10">
                 <div
                     class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                    Trigger "Change"
+                    HTMX
                 </div>
                 <div class="flex justify-between items-start mb-6">
                     <div class="w-12 h-12 rounded-full badge-solution flex items-center justify-center text-xl">
@@ -222,8 +218,8 @@
                 </div>
                 <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Request Automático</h3>
                 <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    O select "pai" (Estado) avisa ao backend que mudou. O backend devolve o HTML do select "filho"
-                    (Cidade).
+                    O select "Estado" avisa ao backend que mudou. O backend devolve o HTML do select "Cidade" com as
+                    opções adequadas, sem necessidade de JS.
                 </p>
                 <!-- Code Snippet -->
                 <div class="mt-auto code-block p-4 shadow-inner border border-gray-700">
@@ -268,7 +264,7 @@
                 </div>
                 <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">HTML Puro</h3>
                 <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    O servidor renderiza as options corretas usando os forms do Django. O front apenas substitui o
+                    O servidor renderiza as opções corretas usando os forms do Django. O front apenas substitui o
                     pedaço necessário.
                 </p>
                 <!-- Visual Representation -->
@@ -287,17 +283,6 @@
                         <i class="fas fa-check-circle"></i> Dados Consistentes
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <div class="mt-2 flex justify-between items-end text-gray-400 text-sm">
-            <div class="flex gap-4">
-                <p><i class="fas fa-lightbulb mr-1 text-yellow-500"></i> UX Tip: Use <code>hx-indicator</code> para
-                    mostrar um spinner enquanto carrega as cidades.</p>
-            </div>
-            <div class="flex items-center gap-2">
-                <p>Django + HTMX Series</p>
-                <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-gray-600 font-bold">08 / 10</span>
             </div>
         </div>
     </div>

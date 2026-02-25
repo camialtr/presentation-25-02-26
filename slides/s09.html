@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
@@ -7,11 +6,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Padrão 3: Submit Parcial</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Montserrat:wght@400;600;700;800&amp;family=Fira+Code:wght@400;500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700;800&family=Fira+Code:wght@400;500;700&display=swap"
         rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             width: 1280px;
@@ -29,17 +27,12 @@
             font-family: 'Fira Code', monospace;
         }
 
-        /* Brand Colors */
         .text-django {
             color: #092e20;
         }
 
         .bg-django {
             background-color: #092e20;
-        }
-
-        .border-django {
-            border-color: #092e20;
         }
 
         .text-htmx {
@@ -50,71 +43,10 @@
             background-color: #336791;
         }
 
-        /* Step Cards */
-        .step-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Connector Arrows */
-        .connector-arrow {
-            color: #cbd5e1;
-            font-size: 2rem;
-            margin-top: 4rem;
-            /* Align with icon area */
-        }
-
-        /* Code styling */
-        .code-block {
-            background-color: #1e293b;
-            color: #e2e8f0;
-            border-radius: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .code-line {
-            display: block;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .code-keyword {
-            color: #f472b6;
-        }
-
-        /* pink */
-        .code-attr {
-            color: #93c5fd;
-        }
-
-        /* blue */
-        .code-string {
-            color: #a3e635;
-        }
-
-        /* green */
-        .code-tag {
-            color: #60a5fa;
-        }
-
-        /* blue-400 */
-        .code-comment {
-            color: #6b7280;
-            font-style: italic;
-        }
-
-        /* gray */
-
-        /* Custom Shadows */
         .card-shadow {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, .1), 0 4px 6px -2px rgba(0, 0, 0, .05);
         }
 
-        /* Status Badges */
         .badge-problem {
             background-color: #fee2e2;
             color: #991b1b;
@@ -129,176 +61,284 @@
             background-color: #dcfce7;
             color: #166534;
         }
+
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-radius: 0.375rem;
+            overflow: hidden;
+        }
+
+        .code-line {
+            display: block;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.7rem;
+            line-height: 1.55;
+        }
+
+        .code-keyword {
+            color: #f472b6;
+        }
+
+        .code-attr {
+            color: #93c5fd;
+        }
+
+        .code-string {
+            color: #a3e635;
+        }
+
+        .code-tag {
+            color: #60a5fa;
+        }
+
+        .code-comment {
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        /* Profile mock helpers */
+        .mock-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 5px;
+        }
+
+        .mock-lbl {
+            font-size: 0.6rem;
+            color: #9ca3af;
+            width: 52px;
+            flex-shrink: 0;
+        }
+
+        .mock-inp {
+            flex: 1;
+            height: 18px;
+            border-radius: 3px;
+            border: 1px solid #d1d5db;
+            background: #fff;
+        }
     </style>
-<link rel="stylesheet" href="dark-theme.css" />
+    <link rel="stylesheet" href="dark-theme.css" />
 </head>
 
 <body class="flex flex-col relative">
     <!-- Header Strip -->
     <div class="absolute top-0 left-0 w-full h-2 bg-django z-20"></div>
-    <!-- Main Content Container -->
-    <div class="flex-1 flex flex-col p-10 pt-14 relative z-10 h-full">
-        <!-- Header -->
-        <header class="mb-8 border-b border-gray-200 pb-4">
-            <div class="flex items-center gap-3 mb-1">
+
+    <!-- Outer wrapper: full height, flex column, vertically distribute header + cards -->
+    <div class="flex flex-col h-full px-10 pt-8 pb-8" style="padding-top: 2.25rem;">
+
+        <!-- ── Header ── -->
+        <header class="border-b border-gray-200 pb-3 mb-6">
+            <div class="mb-0.5">
                 <span
-                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Padrão
-                    #3</span>
+                    class="bg-gray-200 text-gray-700 px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-wider">Casos
+                    de Uso</span>
             </div>
             <div class="flex justify-between items-end">
                 <div>
-                    <h1 class="text-4xl font-heading font-extrabold text-gray-800 leading-tight">
-                        Submit Parcial <span class="font-light text-gray-400">|</span> <span
-                            class="text-htmx text-3xl">Partial Submit</span>
+                    <h1 class="text-3xl font-heading font-extrabold text-gray-800 leading-tight">Submit Parcial de Seção
                     </h1>
-                    <p class="text-gray-500 mt-2 text-lg">Atualizações sem recarregar a página para CRUDs ricos e
-                        dinâmicos</p>
+                    <p class="text-gray-500 mt-1 text-sm">Formulários de perfil com <strong>seções
+                            independentes</strong> — cada uma salva sem afetar as demais.</p>
                 </div>
-                <!-- Legend/Key for the pattern -->
-                <div class="flex gap-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-400"></div>Fluxo Padrão
+                <div class="flex gap-5 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-red-400"></div>Problema
                     </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-htmx"></div>Estratégia
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-htmx"></div>Solução
                     </div>
-                    <div class="flex items-center gap-2">
-                        <div class="w-3 h-3 rounded-full bg-green-500"></div>Resultado
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-2.5 h-2.5 rounded-full bg-green-500"></div>Resultado
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Main Flow Area (3 Columns) -->
-        <div class="flex-1 grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch pb-6">
-            <!-- STEP 1: PROBLEM -->
-            <div class="step-card bg-white rounded-xl border-t-4 border-red-400 card-shadow p-6 group">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="w-12 h-12 rounded-full badge-problem flex items-center justify-center text-xl">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Reload Total</span>
-                </div>
-                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Interrupção de Fluxo</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Em formulários complexos (ex: modais, dashboards), o submit tradicional recarrega tudo, perdendo
-                    scroll e estado da UI.
-                </p>
-                <!-- Visual Representation -->
-                <div
-                    class="mt-auto bg-gray-50 rounded-lg p-4 border border-gray-200 relative overflow-hidden flex flex-col items-center justify-center h-32">
-                    <div class="w-full h-full flex flex-col gap-2 opacity-50 blur-[1px]">
-                        <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                        <div class="h-20 bg-white border border-gray-300 rounded w-full"></div>
-                        <div class="h-2 bg-gray-300 rounded w-1/2"></div>
-                    </div>
-                    <!-- Loading Spinner Overlay -->
-                    <div class="absolute inset-0 flex items-center justify-center bg-white/60">
-                        <i class="fas fa-circle-notch fa-spin text-3xl text-gray-400"></i>
-                    </div>
-                </div>
-            </div>
-            <!-- ARROW 1 -->
-            <div class="flex items-center justify-center">
-                <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-            <!-- STEP 2: SOLUTION (Focus) -->
-            <div
-                class="step-card bg-white rounded-xl border-t-4 border-htmx card-shadow p-6 relative transform scale-105 z-10">
-                <div
-                    class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
-                    Lógica Bifurcada
-                </div>
-                <div class="flex justify-between items-start mb-6">
-                    <div class="w-12 h-12 rounded-full badge-solution flex items-center justify-center text-xl">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <span class="text-xs font-bold text-htmx uppercase tracking-wider">View Django</span>
-                </div>
-                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Erro vs Sucesso</h3>
-                <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-                    O servidor decide o que atualizar baseando-se na validade do form.
-                </p>
-                <!-- Code Snippet -->
-                <div class="mt-auto code-block p-4 shadow-inner border border-gray-700">
-                    <div class="flex items-center justify-between mb-2 border-b border-gray-700 pb-2">
-                        <span class="text-xs text-gray-400 font-mono">views.py</span>
-                        <i class="fab fa-python text-yellow-500"></i>
-                    </div>
-                    <code class="code-line">
-<span class="code-keyword">if</span> form.is_valid():
-                    </code>
-                    <code class="code-line pl-4">
-                        item = form.save()
-                    </code>
-                    <code class="code-line pl-4">
-<span class="code-keyword">return</span> render(request, <span class="code-string">"row.html"</span>, {<span class="code-string">"item"</span>: item})
-                    </code>
-                    <code class="code-line">
-<span class="code-keyword">else</span>:
-                    </code>
-                    <code class="code-line pl-4">
-<span class="code-comment"># Retorna form com erros</span>
-</code>
-                    <code class="code-line pl-4">
-<span class="code-keyword">return</span> render(request, <span class="code-string">"form.html"</span>, {<span class="code-string">"form"</span>: form})
-                    </code>
-                </div>
-            </div>
-            <!-- ARROW 2 -->
-            <div class="flex items-center justify-center">
-                <i class="fas fa-chevron-right connector-arrow"></i>
-            </div>
-            <!-- STEP 3: RESULT -->
-            <div class="step-card bg-white rounded-xl border-t-4 border-green-500 card-shadow p-6">
-                <div class="flex justify-between items-start mb-6">
-                    <div class="w-12 h-12 rounded-full badge-result flex items-center justify-center text-xl">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Experiência</span>
-                </div>
-                <h3 class="font-heading font-bold text-gray-800 text-xl mb-3">Atualização Cirúrgica</h3>
-                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                    Se der erro, o form "pisca" com as mensagens. Se der certo, a nova linha aparece na tabela ou um
-                    card surge.
-                </p>
-                <!-- Visual Representation -->
-                <div
-                    class="mt-auto bg-green-50 rounded-lg p-4 border border-green-200 flex flex-col justify-center h-32 relative">
-                    <!-- Table representation -->
-                    <div class="space-y-2">
-                        <div class="flex gap-2">
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
+
+        <!-- ── Cards row — vertically centered in remaining space ── -->
+        <div class="flex-1 flex items-center">
+            <div class="flex-1 grid grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-stretch pb-6">
+
+                <!-- ═══ CARD 1: PROBLEMA ═══ -->
+                <div class="step-card bg-white rounded-xl border-t-4 border-red-400 card-shadow p-6 group">
+
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full badge-problem flex items-center justify-center text-xl">
+                            <i class="fas fa-sync-alt"></i>
                         </div>
-                        <div class="flex gap-2">
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                            <div class="h-2 bg-gray-300 rounded w-1/4"></div>
-                        </div>
-                        <!-- New Row Animation -->
-                        <div class="flex gap-2 p-1 bg-green-200 rounded border border-green-300 animate-pulse">
-                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
-                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
-                            <div class="h-2 bg-green-600 rounded w-1/4"></div>
+                        <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Reload Total</span>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading font-bold text-gray-800 text-lg leading-snug mb-1">Um Form, um Submit
+                        </h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">
+                            Username, e-mail e senha estão num único <code
+                                class="bg-gray-100 px-0.5 rounded">&lt;form&gt;</code>.
+                            Salvar qualquer campo recarrega a página toda — e envia o campo de senha sem necessidade.
+                        </p>
+                    </div>
+
+                    <div style="padding-top: 90px;">
+                        <!-- Mock form with spinner -->
+                        <div class="bg-gray-50 rounded-lg p-3 border border-gray-200 relative">
+                            <p class="text-[0.58rem] font-bold text-gray-400 uppercase tracking-wide mb-2">Perfil</p>
+                            <div class="mock-row"><span class="mock-lbl">Username</span>
+                                <div class="mock-inp"></div>
+                            </div>
+                            <div class="mock-row"><span class="mock-lbl">E-mail</span>
+                                <div class="mock-inp"></div>
+                            </div>
+                            <div class="mock-row" style="margin-bottom:6px"><span class="mock-lbl">Senha</span>
+                                <div class="mock-inp" style="border-color:#fcd34d;background:#fefce8"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-[0.55rem] text-yellow-600 font-semibold flex items-center gap-1">
+                                    <i class="fas fa-exclamation-triangle"></i> senha exposta desnecessariamente
+                                </span>
+                                <span class="text-[0.58rem] font-bold bg-gray-700 text-white px-2 py-0.5 rounded">Salvar
+                                    Tudo</span>
+                            </div>
                         </div>
                     </div>
+
+                </div>
+
+                <!-- Arrow 1 -->
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-gray-300 text-2xl"></i>
+                </div>
+
+                <!-- ═══ CARD 2: SOLUÇÃO ═══ -->
+                <div
+                    class="step-card bg-white rounded-xl border-t-4 border-htmx card-shadow p-6 relative transform scale-105 z-10">
                     <div
-                        class="absolute bottom-1 right-1 text-[10px] text-green-700 font-bold bg-white px-1 rounded shadow">
-                        + Nova Linha Inserida
+                        class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-htmx text-white px-3 py-1 rounded-full text-xs font-bold shadow-md">
+                        Estratégia HTMX
                     </div>
+
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full badge-solution flex items-center justify-center text-xl">
+                            <i class="fas fa-puzzle-piece"></i>
+                        </div>
+                        <span class="text-xs font-bold text-htmx uppercase tracking-wider">Seções Isoladas</span>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading font-bold text-gray-800 text-lg leading-snug mb-1">Um Form por
+                            Responsabilidade</h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">
+                            Cada seção tem seu próprio <code class="bg-gray-100 px-0.5 rounded">&lt;form&gt;</code> com
+                            <code class="bg-gray-100 px-0.5 rounded">hx-post</code> e <code
+                                class="bg-gray-100 px-0.5 rounded">hx-target</code> apontando para si mesma. Senha fica
+                            isolada por design.
+                        </p>
+                    </div>
+
+                    <!-- Code -->
+                    <div class="code-block p-3 border border-gray-700">
+                        <div class="flex justify-between items-center border-b border-gray-700 pb-1.5 mb-2">
+                            <span class="font-mono text-gray-400 text-[0.62rem]">perfil.html</span>
+                            <i class="fab fa-html5 text-orange-400 text-xs"></i>
+                        </div>
+                        <code
+                            class="code-line"><span class="code-comment">&lt;!-- Seção: Dados da Conta --&gt;</span></code>
+                        <code
+                            class="code-line"><span class="code-tag">&lt;form</span> <span class="code-attr">id</span>=<span class="code-string">"dados-conta"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-post</span>=<span class="code-string">"/perfil/conta/"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-target</span>=<span class="code-string">"#dados-conta"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-swap</span>=<span class="code-string">"outerHTML"</span><span class="code-tag">&gt;</span></code>
+                        <code
+                            class="code-line pl-5">  <span class="code-comment">&lt;!-- username + email --&gt;</span></code>
+                        <code class="code-line"><span class="code-tag">&lt;/form&gt;</span></code>
+                        <code
+                            class="code-line mt-1"><span class="code-comment">&lt;!-- Seção: Senha (separada) --&gt;</span></code>
+                        <code
+                            class="code-line"><span class="code-tag">&lt;form</span> <span class="code-attr">id</span>=<span class="code-string">"alterar-senha"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-post</span>=<span class="code-string">"/perfil/senha/"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-target</span>=<span class="code-string">"#alterar-senha"</span></code>
+                        <code
+                            class="code-line pl-5">     <span class="code-attr">hx-swap</span>=<span class="code-string">"outerHTML"</span><span class="code-tag">&gt;</span></code>
+                        <code
+                            class="code-line pl-5">  <span class="code-comment">&lt;!-- nova senha + confirmação --&gt;</span></code>
+                        <code class="code-line"><span class="code-tag">&lt;/form&gt;</span></code>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <div class="mt-2 flex justify-between items-end text-gray-400 text-sm">
-            <div class="flex gap-4">
-                <p><i class="fas fa-lightbulb mr-1 text-yellow-500"></i> Dica: Use <code>hx-swap="outerHTML"</code> para
-                    substituir a linha inteira ou o form.</p>
-            </div>
-            <div class="flex items-center gap-2">
-                <p>Django + HTMX Series</p>
-                <span class="font-mono bg-gray-200 px-2 py-0.5 rounded text-gray-600 font-bold">09 / 10</span>
+
+                <!-- Arrow 2 -->
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-gray-300 text-2xl"></i>
+                </div>
+
+                <!-- ═══ CARD 3: RESULTADO ═══ -->
+                <div class="step-card bg-white rounded-xl border-t-4 border-green-500 card-shadow p-6">
+
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full badge-result flex items-center justify-center text-xl">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Resultado</span>
+                    </div>
+
+                    <div>
+                        <h3 class="font-heading font-bold text-gray-800 text-lg leading-snug mb-1">Isolamento Cirúrgico
+                        </h3>
+                        <p class="text-gray-500 text-xs leading-relaxed">
+                            Salvar dados da conta não toca a seção de senha. Cada view Django retorna apenas o fragmento
+                            da própria seção — com sucesso ou erros de validação.
+                        </p>
+                    </div>
+
+                    <!-- Mock: two independent sections -->
+                    <div class="space-y-2" style="padding-top: 70px;">
+
+                        <!-- Section 1: saved -->
+                        <div class="rounded-lg p-3 border border-green-200 bg-green-50">
+                            <p
+                                class="text-[0.58rem] font-bold text-green-600 uppercase tracking-wide mb-2 flex items-center gap-1">
+                                <i class="fas fa-check-circle"></i> Dados da Conta — salvo
+                            </p>
+                            <div class="mock-row"><span class="mock-lbl">Username</span>
+                                <div
+                                    class="flex-1 h-[18px] rounded border border-green-300 bg-green-100 flex items-center px-1.5">
+                                    <span class="text-[0.6rem] text-green-800 font-semibold">novo_usuario</span>
+                                </div>
+                            </div>
+                            <div class="mock-row" style="margin-bottom:0"><span class="mock-lbl">E-mail</span>
+                                <div
+                                    class="flex-1 h-[18px] rounded border border-green-300 bg-green-100 flex items-center px-1.5">
+                                    <span class="text-[0.6rem] text-green-800 font-semibold">novo@email.com</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: untouched -->
+                        <div class="rounded-lg p-3 border border-gray-200 bg-gray-50">
+                            <p
+                                class="text-[0.58rem] font-bold text-gray-400 uppercase tracking-wide mb-2 flex items-center gap-1">
+                                <i class="fas fa-lock"></i> Alterar Senha — intacta
+                            </p>
+                            <div class="mock-row"><span class="mock-lbl">Nova senha</span>
+                                <div class="mock-inp"></div>
+                            </div>
+                            <div class="mock-row" style="margin-bottom:0"><span class="mock-lbl">Confirmar</span>
+                                <div class="mock-inp"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
